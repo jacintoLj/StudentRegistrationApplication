@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,19 +17,33 @@ namespace StudentRegistrationApplication
         {
             InitializeComponent();
 
+            string[] array = { "January", "Febuary", "March", "April", "May",
+            "June", "July", "August", "September", "October", "November", "December" };
+            
             for (int i = 1; i <= 31; i++)
             {
                 comboBox1.Items.Add(i);
             }
 
-            for (int i = 1;i <= 12; i++)
+            foreach (string month in array)          
             {
-                comboBox2.Items.Add(i);
+                comboBox2.Items.Add(month);
             }
 
             for (int i = 1900; i <= 2024; i++)
             {
                 comboBox3.Items.Add(i);
+            }
+
+            ArrayList program = new ArrayList();
+            program.Add("Bachelor of Science in Computer Science");
+            program.Add("Bachelor of Science in Information Technology");
+            program.Add("Bachelor of Science in Information System");
+            program.Add("Bachelor of Science in Computer Engineering");
+
+            foreach(string programList in program)
+            {
+                comboBox4.Items.Add(programList);
             }
         }
 
@@ -75,7 +90,8 @@ namespace StudentRegistrationApplication
             }
             MessageBox.Show("Student name: " + firstName + " " + middleName + " " +
                 lastName + "\n" + "Gender: " + gender + "\n" + "Date of birth: " + comboBox1.Text + "/" +
-                comboBox2.Text + "/" + comboBox3.Text);
+                comboBox2.Text + "/" + comboBox3.Text + "\n" + "Program: " + comboBox4.Text);
+
         }
     }
 }
